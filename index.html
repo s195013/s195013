@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+
+<HEAD>
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=Shift_JIS">
+<META HTTP-EQUIV="Content-Script-Type" CONTENT="text/javascript">
+<TITLE>指定時間までのカウントダウン</TITLE>
+
+</HEAD>
+
+<BODY>
+
+<SCRIPT LANGUAGE="javascript" TYPE="text/javascript">
+<!--
+var s_Year=2000;
+var s_Mon=1;
+var s_Day=1;
+var s_Hour=0;
+var s_Min=0;
+var s_Sec=0;
+document.write(s_Year+"年"+s_Mon+"月"+s_Day+"日"+s_Hour+":"+s_Min+":"+s_Sec+"まで、あと");
+document.write("<FORM NAME='clock'><INPUT TYPE='text' NAME='clock_box' SIZE=20>秒</FORM>");
+ClockDisplay();
+
+function ClockDisplay(){
+	var d_Now = new Date();
+	var d_Time = d_Now.getTime();
+	var s_Now = new Date();
+	var s_Time
+
+	s_Now.setYear(s_Year);
+	s_Now.setMonth(s_Mon-1);
+	s_Now.setDate(s_Day);
+	s_Now.setHours(s_Hour);
+	s_Now.setMinutes(s_Min);
+	s_Now.setSeconds(s_Sec);
+	s_Time=s_Now.getTime();
+
+	document.clock.clock_box.value = Math.round((s_Time-d_Time)/1000);
+	setTimeout("ClockDisplay()",1000)
+}
+// -->
+</SCRIPT>
+
+</BODY>
+</HTML>
